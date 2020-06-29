@@ -3,3 +3,9 @@
     <%%= render object: @<%= singular_table_name %>, partial: "card", as: :<%= singular_table_name %> %>
   </div>
 </div>
+
+<% if with_sentinels? -%>
+  <!-- Show Page Customization starts -->
+
+  <!-- Show Page Customization end -->
+<% end -%>
