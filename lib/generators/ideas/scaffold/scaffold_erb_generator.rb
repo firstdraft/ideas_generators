@@ -12,6 +12,27 @@ module Ideas
       end
     end
 
+    def add_helpers
+      return if File.read("app/helpers/application_helper.rb").scan(/def\s*link_to_show_or_back/).present?
+      inject_into_file "app/helpers/application_helper.rb", after: /module\s*ApplicationHelper/ do
+<<-CODE
+
+  def link_to_show_or_back(
+        object,
+        show_content = "Show",
+        back_content = "Back",
+        options = {}
+      )
+    if request.path == url_for(object)
+      link_to back_content, :back, options
+    else
+      link_to show_content, object, options
+    end
+  end
+CODE
+      end
+    end
+
     private
 
     def available_views
