@@ -6,6 +6,8 @@ module Ideas
   class ScaffoldErbGenerator < Erb::Generators::ScaffoldGenerator
     source_root File.expand_path("../templates", __FILE__)
 
+    class_option :primary_descriptor, aliases: "--descriptor", default: "", desc: "Provide attribute name to be used in index page"
+
     def copy_view_files
       available_views.each do |view|
         template view, File.join("app/views", controller_file_path, view)
