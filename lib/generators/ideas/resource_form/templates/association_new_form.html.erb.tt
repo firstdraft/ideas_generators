@@ -1,0 +1,59 @@
+<% if with_sentinels? -%>
+<!-- Form <%= singular_table_name %> start -->
+<% end -%>
+<%%= form_with(model: <%= redirect_resource_name %>, local: true) do |f| %>
+<% if with_sentinels? -%>
+<!-- Form <%= singular_table_name %> end -->
+<% end -%>
+<% attributes.each do |attribute| -%>
+<% if with_sentinels? %>
+  <!-- Label and input for <%= attribute.column_name %> start -->
+<% end -%>
+<% if attribute.type == :hidden -%>
+<% if with_sentinels? -%>
+  <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+  <%%= f.hidden_field :<%= attribute.column_name %>, value: <%= new_form_hidden_variable %> %>
+<% if with_sentinels? -%>
+  <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% elsif attribute.field_type == :check_box -%>
+  <div class="form-check">
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.check_box :<%= attribute.column_name %>, class: "form-check-input" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+    <%%= f.label :<%= attribute.column_name %>, class: "form-check-label" %>
+  </div>
+<% else -%>
+  <div class="form-group">
+    <%%= f.label :<%= attribute.column_name %> %>
+<% if attribute.field_type == :text_area -%>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.text_area :<%= attribute.column_name %>, rows: "3", class: "form-control" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% else -%>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.text_field :<%= attribute.column_name %>, class: "form-control" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% end -%>
+  </div>
+<% end -%>
+<% if with_sentinels? -%>
+  <!-- Label and input for <%= attribute.column_name %> end -->
+<% end -%>
+<% end -%>
+
+  <%%= f.submit "Create <%= singular_table_name.humanize.downcase %>", class: "btn btn-block btn-outline-secondary" %>
+<%% end %>

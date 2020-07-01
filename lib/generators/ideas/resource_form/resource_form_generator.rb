@@ -16,7 +16,7 @@ module Ideas
     end
 
     def generate_view_files
-      template "association_new_form.html.erb",
+      template "association_new_form.html.erb.tt",
                File.join(view_template_path, options.new_form_name)
     end
 
