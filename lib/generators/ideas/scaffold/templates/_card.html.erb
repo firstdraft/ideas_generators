@@ -7,7 +7,13 @@
     <dl class="mb-1">
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <dt><%= attribute.human_name %></dt>
+<% if with_sentinels? -%>
+      <!-- Display <%= attribute.column_name %> start -->
+<% end -%>
       <dd><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></dd>
+<% if with_sentinels? -%>
+      <!-- Display <%= attribute.column_name %> end -->
+<% end -%>
 
 <% end -%>
     </dl>
@@ -17,17 +23,29 @@
         <%%= link_to_show_or_back <%= singular_table_name %>, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
+<% if with_sentinels? -%>
+      <!-- Edit link <%= singular_table_name %> start -->
+<% end -%>
       <div class="col">
         <%%= link_to edit_<%= singular_table_name %>_url(<%= singular_table_name %>), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <%% end %>
       </div>
+<% if with_sentinels? -%>
+      <!-- Edit link <%= singular_table_name %> end -->
+<% end -%>
 
+<% if with_sentinels? -%>
+      <!-- Delete link <%= singular_table_name %> start -->
+<% end -%>
       <div class="col">
         <%%= link_to <%= singular_table_name %>, method: :delete, data: { confirm: "Do you really want to delete this <%= singular_table_name %>?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <%% end %>
       </div>
+<% if with_sentinels? -%>
+      <!-- Delete link <%= singular_table_name %> end -->
+<% end -%>
     </div>
   </div>
 
