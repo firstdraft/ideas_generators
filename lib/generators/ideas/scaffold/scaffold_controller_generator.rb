@@ -7,8 +7,6 @@ module Ideas
   class ScaffoldControllerGenerator < ::Rails::Generators::ScaffoldControllerGenerator
     source_root Rails::Generators::ScaffoldControllerGenerator.source_root
 
-    class_option :primary_descriptor, aliases: "--descriptor", default: "", desc: "Provide attribute name to be used in index page"
-
     remove_hook_for :template_engine
 
     def generate_views
