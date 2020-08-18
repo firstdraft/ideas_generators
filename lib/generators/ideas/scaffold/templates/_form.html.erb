@@ -10,34 +10,34 @@
     <%% <%= attribute.name %>_class = "form-check-input" %>
 <% else -%>
   <div class="form-group">
-    <%% <%= attribute.name %>_class = "form-control" %>
+    <%% <%= attribute.singular_name %>_class = "form-control" %>
 <% end -%>
-    <%% <%= attribute.name %>_was_invalid = <%= singular_table_name %>.errors.include?(:<%= attribute.name %>) %>
+    <%% <%= attribute.singular_name %>_was_invalid = <%= singular_table_name %>.errors.include?(:<%= attribute.singular_name %>) %>
 
     <%% if was_validated %>
-      <%% if <%= attribute.name %>_was_invalid %>
-        <%% <%= attribute.name %>_class << " is-invalid" %>
+      <%% if <%= attribute.singular_name %>_was_invalid %>
+        <%% <%= attribute.singular_name %>_class << " is-invalid" %>
       <%% else %>
-        <%% <%= attribute.name %>_class << " is-valid" %>
+        <%% <%= attribute.singular_name %>_class << " is-valid" %>
       <%% end %>
     <%% end %>
 
 <% if attribute.field_type == :check_box -%>
-    <%%= f.label :<%= attribute.name %>, class: "form-check-label" do %>
-      <%%= f.check_box :<%= attribute.name %>, class: <%= attribute.name %>_class %> <%= attribute.name.humanize %>
+    <%%= f.label :<%= attribute.singular_name %>, class: "form-check-label" do %>
+      <%%= f.check_box :<%= attribute.singular_name %>, class: <%= attribute.singular_name %>_class %> <%= attribute.singular_name.humanize %>
     <%% end %>
 <% else -%>
     <%%= f.label :<%= attribute.column_name %> %>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> start -->
 <% end -%>
-    <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, class: <%= attribute.name %>_class, placeholder: "Enter <%= attribute.name.humanize.downcase %>" %>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, class: <%= attribute.singular_name %>_class, placeholder: "Enter <%= attribute.singular_name.humanize.downcase %>" %>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> end -->
 <% end -%>
 <% end -%>
-    <%% if <%= attribute.name %>_was_invalid %>
-      <%% <%= singular_table_name %>.errors.full_messages_for(:<%= attribute.name %>).each do |message| %>
+    <%% if <%= attribute.singular_name %>_was_invalid %>
+      <%% <%= singular_table_name %>.errors.full_messages_for(:<%= attribute.singular_name %>).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%%= message %>
         </div>
