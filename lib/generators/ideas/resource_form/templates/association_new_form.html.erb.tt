@@ -39,7 +39,31 @@
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> end -->
 <% end -%>
-<% else -%>
+<% elsif attribute.field_type == :datetime -%>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.datetime_select :<%= attribute.column_name %>, class: "form-control" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% elsif attribute.field_type == :date %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.date_select :<%= attribute.column_name %>, class: "form-control" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% elsif attribute.field_type == :time %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> start -->
+<% end -%>
+    <%%= f.date_select :<%= attribute.column_name %>, class: "form-control" %>
+<% if with_sentinels? -%>
+    <!-- Input for <%= attribute.column_name %> end -->
+<% end -%>
+<% else %>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> start -->
 <% end -%>
