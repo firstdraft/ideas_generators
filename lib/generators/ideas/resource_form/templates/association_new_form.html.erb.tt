@@ -39,7 +39,7 @@
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> end -->
 <% end -%>
-<% elsif attribute.field_type == :datetime -%>
+<% elsif attribute.type == :datetime -%>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> start -->
 <% end -%>
@@ -47,7 +47,7 @@
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> end -->
 <% end -%>
-<% elsif attribute.field_type == :date %>
+<% elsif attribute.type == :date %>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> start -->
 <% end -%>
@@ -55,7 +55,7 @@
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> end -->
 <% end -%>
-<% elsif attribute.field_type == :time %>
+<% elsif attribute.type == :time %>
 <% if with_sentinels? -%>
     <!-- Input for <%= attribute.column_name %> start -->
 <% end -%>
